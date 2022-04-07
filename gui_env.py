@@ -4,7 +4,9 @@ import cv2
 import time
 import numpy as np 
 from helpers import draw
+from inference import Inference
 from configs.gui_configs import *
+from configs.prediction_configs import *
 
 
 class Draw:
@@ -44,6 +46,9 @@ class Interact:
         self.erasing = False
         self.generation_box = (0, 0, 0)
         self.generation_time = None
+        self.generator = Inference(GENERATOR_PATH,
+                                   MAIN_SHAPE,
+                                   INPUT_SHAPE)
         
     def sliders(self):
         cv2.setTrackbarMin("Pen Size: ", "UStar", 5)
@@ -104,6 +109,13 @@ class Interact:
             if y >= gY and y <= gY2:
                 self.generation_time = time.time() 
                 self.generation_box = (0, 255, 255)
+                sample = self.main_screen[self.cH1-self.cH2: self.cH1+self.cH2,
+                                          self.cW1-self.cW2: self.cW1+self.cW2]
+                self.generator.prepare(sample)
+                self.generator.generate()
+                res = self.generator.get_outcome()
+                cv2.imwrite("res.jpg", res)
+                
     
     def check_drawing(self, x, y):
         if x <= self.cW1+self.cW2 and x >= self.cW1-self.cW2: 

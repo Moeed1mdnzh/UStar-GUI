@@ -51,7 +51,7 @@ class Paint:
     
     def update_generation(self, box, t):
         if t is not None:
-            if 0.1 <= time.time()-t:
+            if 1.4 <= time.time()-t:
                 box = (0, 0, 0)
                 t = None
         return box, t
@@ -60,7 +60,7 @@ class Paint:
 
 class Graphics:
     def __init__(self):
-        self.rgb_path = os.sep.join(["helpers", "colors2.jpg"])
+        self.rgb_path = os.sep.join(["helpers", "colors.jpg"])
         self.tool_images = []
         for name in ["brush", "eraser"]:
             image = cv2.imread(os.sep.join(["helpers", name])+".jpg")
