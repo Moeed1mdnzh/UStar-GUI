@@ -4,7 +4,6 @@ import time
 import numpy as np 
 
 class Paint:
-        
     def overlap(self, screen_1, screen_2, size=10):
         H1, W1 = screen_1.shape[:2] 
         H2, W2 = screen_2.shape[:2]
@@ -43,7 +42,7 @@ class Paint:
                     times[i] = None 
         return boxes, times
     
-    def generation_alignment(self, screen, pt, color):
+    def button_alignment(self, screen, pt, color):
         clone = screen.copy()
         if color != (0, 0, 0):
             cv2.rectangle(clone, pt[0], pt[1], color, -1)
@@ -51,7 +50,28 @@ class Paint:
     
     def update_generation(self, box, t):
         if t is not None:
-            if 1.4 <= time.time()-t:
+            if 1.3 <= time.time()-t:
+                box = (0, 0, 0)
+                t = None
+        return box, t
+    
+    def save_button(self, screen, x, y, x2, y2):
+        clone = screen.copy()
+        cv2.rectangle(clone, (x, y), (x2, y2), (0, 200, 0), 3)
+        cv2.putText(clone, "Save", (x+36, y+28), cv2.FONT_HERSHEY_SIMPLEX,
+                    0.9, (255, 255, 255), 2)
+        return clone
+    
+    def return_button(self, screen, x, y, x2, y2):
+        clone = screen.copy()
+        cv2.rectangle(clone, (x, y), (x2, y2), (200, 0, 200), 3)
+        cv2.putText(clone, "Return", (x+23, y+28), cv2.FONT_HERSHEY_SIMPLEX,
+                    0.9, (255, 255, 255), 2)
+        return clone
+    
+    def update_button(self, box, t):
+        if t is not None:
+            if 0.1 <= time.time()-t:
                 box = (0, 0, 0)
                 t = None
         return box, t
