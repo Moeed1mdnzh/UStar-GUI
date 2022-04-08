@@ -12,6 +12,7 @@ from configs.prediction_configs import *
 class Draw:
     def __init__(self):
         self.screen = np.zeros((SH, SW, 3), np.uint8)
+        self.clone = self.screen.copy()
         self.canvas = np.zeros((CH, CW, 3), np.uint8)  
         self.paint_helper = draw.Paint()
         self.graphical_helper = draw.Graphics()
@@ -115,7 +116,7 @@ class Interact:
                 self.generator.generate()
                 res = self.generator.get_outcome()
                 x, y, _, _ = cv2.getWindowImageRect("UStar")
-                result_screen = Result(self.screen, res, 
+                result_screen = Result(self.clone, sample, res, 
                                        [self.cH1, self.cH2, self.cW1, self.cW2], x, y)
                 cv2.destroyWindow("UStar")
                 result_screen.start()

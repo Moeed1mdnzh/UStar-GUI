@@ -39,10 +39,11 @@ class Inference:
         return pred
     
 class Result:
-    def __init__(self, screen, result, pts, wX, wY):
+    def __init__(self, screen, original, result, pts, wX, wY):
         self.screen = screen.copy()
         self.screen[pts[0]-pts[1]: pts[0]+pts[1],
                     pts[2]-pts[3]: pts[2]+pts[3]] = result
+        self.original = original
         self.result = result
         self.wX, self.wY = wX, wY
         self.paint_helper = draw.Paint()
@@ -98,6 +99,7 @@ class Result:
                 self.button_times[0] = time.time()
                 os.system("mkdir result")
                 cv2.imwrite(os.sep.join(["result", "result.jpg"]), self.result)
+                cv2.imwrite(os.sep.join(["result", "input.jpg"]), self.original)
             
     def start(self):
         cv2.namedWindow("UStar", cv2.WINDOW_NORMAL)
