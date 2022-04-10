@@ -24,11 +24,11 @@ The process of running the program is as simple as a piece of cake.As you're alr
 python run.py
 ```
 # Guideline
-Once you completed the previous steps, you should then be able to face such screen
+Once you've completed the previous steps, you should then be able to face such screen
 ![](https://github.com/Moeed1mdnzh/UStar-GUI/blob/master/images/screen.PNG)
 <br />
 You are provided with both a color picker and sliders for accurate rgb values to paint with but you'd get warned if you use dark colors as 
-it is said why in the Notes section(Next section).The pen size slider, brush and eraser options are obvious and the **C** option is used to reset
+it is said why in the **Notes** section(Next section).The pen size slider, brush and eraser options are obvious and the **C** option is used to reset
 everything.Once you are done with your painting, press generate to be navigated to the next screen(It may take some time to generate your image depending
 on your GPU and CPU).
 
