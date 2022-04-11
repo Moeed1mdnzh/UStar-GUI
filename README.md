@@ -7,7 +7,7 @@ The point of this simple application is to represent the usage of the [UStar](ht
 ![](https://github.com/Moeed1mdnzh/UStar-GUI/blob/master/images/input_3.jpg)|![](https://github.com/Moeed1mdnzh/UStar-GUI/blob/master/images/result_3.jpg)
 
 *Examples of the performance of the model*<br /><br />
-The quality of the results aren't the best but they'll be improved in upcoming updates to the model.
+The quality of the results aren't the best but they'll be improved in the upcoming updates to the model.
 
 ## Installation
 Clone this repository using <br />
